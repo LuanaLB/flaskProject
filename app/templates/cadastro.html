@@ -1,0 +1,53 @@
+{% extends 'entrada.html' %}
+
+{% block content %}
+    <div class="cadastros">
+        <div class="col-md-12 justify-content-center form-auth">
+            <div class="container-form">
+                <hr>
+                <h1 class="text-logo">Cadastrar Jogo</h1>
+                <hr>
+                <form class="form mt-2 p-4 align-left border shadow rounded" method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.csrf_token }}
+                    <div class="row">
+                        <div class="col">
+                            {{ form.nome.label }}
+                            {{ form.nome(class='form-control') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form.informacoes.label }}
+                            {{ form.informacoes(class='form-control') }}
+                        </div>
+                        <div class="col">
+                            {{ form.categorias.label }}
+                            {{ form.categorias(class='form-control') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form.consoles.label }}
+                            {{ form.consoles(class='form-control') }}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            {{ form.submit(class='btn btn-primary col-12') }}
+                        </div>
+                    </div>
+                </form>
+                {% if messages %}
+                    <br>
+                    {% for message in messages %}
+                        <section class="alert {{ message.tags }}">
+                            {{ message }}
+                        </section>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
